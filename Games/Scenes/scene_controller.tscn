@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkhvdmxnsaxwk"]
+
+[ext_resource type="Script" path="res://Code/SceneController.gd" id="1_ckpgc"]
+[ext_resource type="PackedScene" uid="uid://xedxfxf70n0g" path="res://Scenes/Level1.tscn" id="2_4k5ld"]
+
+[sub_resource type="Animation" id="Animation_7yx21"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_i0fkm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1rpso"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmgop"]
+_data = {
+"RESET": SubResource("Animation_i0fkm"),
+"fade_in": SubResource("Animation_7yx21"),
+"fade_out": SubResource("Animation_1rpso")
+}
+
+[node name="SceneController" type="Node" node_paths=PackedStringArray("ANIM")]
+script = ExtResource("1_ckpgc")
+ANIM = NodePath("AnimationPlayer")
+
+[node name="Level1" parent="." instance=ExtResource("2_4k5ld")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qmgop")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1000
+offset_left = -53.0
+offset_top = -595.0
+offset_right = 1867.0
+offset_bottom = 685.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
