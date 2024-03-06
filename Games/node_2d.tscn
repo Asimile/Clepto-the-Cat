@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv1g0l8j47kjt"]
+
+[ext_resource type="Script" path="res://Code/CharacterBody2Dbust.gd" id="1_orgbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p41dq"]
+size = Vector2(1201, 116)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_et520"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(583.5, 531)
+shape = SubResource("RectangleShape2D_p41dq")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(220, 178)
+script = ExtResource("1_orgbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_et520")
