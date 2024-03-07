@@ -69,9 +69,9 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 z_index = 1000
 offset_left = -53.0
-offset_top = -595.0
+offset_top = -470.0
 offset_right = 1867.0
-offset_bottom = 685.0
+offset_bottom = 810.0
 color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
