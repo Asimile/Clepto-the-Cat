@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkgnaopa6yfl4"]
+[gd_scene load_steps=6 format=3 uid="uid://dkgnaopa6yfl4"]
 
 [ext_resource type="Texture2D" uid="uid://dkctir1ge7a14" path="res://Assets/CleptoTileSetWIP.png" id="1_v7ho4"]
 [ext_resource type="PackedScene" uid="uid://i68apaqnq0gt" path="res://Scenes/clepto_the_cat.tscn" id="2_v106t"]
+[ext_resource type="PackedScene" uid="uid://d1ex3berh5ebo" path="res://Scenes/Laser.tscn" id="3_mgrkh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2dfh"]
 texture = ExtResource("1_v7ho4")
@@ -151,7 +152,7 @@ texture = ExtResource("1_v7ho4")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_57uav"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Normal"
 terrain_set_0/terrain_0/color = Color(0.494118, 0.25098, 0.65098, 1)
@@ -165,7 +166,12 @@ position = Vector2(3, -340)
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_57uav")
 format = 2
-layer_0/tile_data = PackedInt32Array(983041, 65536, 3, 983042, 65536, 3, 983043, 65536, 3, 983044, 65536, 3, 983045, 131072, 2, 917509, 196608, 1, 851973, 196608, 1, 786437, 196608, 1, 720901, 196608, 1, 720896, 196608, 1, 786432, 196608, 1, 851968, 196608, 1, 917504, 0, 2, 983040, 0, 2, 655360, 196608, 0, 655363, 65536, 3, 655364, 65536, 3, 655365, 131072, 3, 655361, 65536, 3, 655362, 65536, 3)
+layer_0/tile_data = PackedInt32Array(458745, 196608, 0, 524281, 196608, 1, 589817, 196608, 2, 589818, 65536, 3, 589819, 65536, 3, 589820, 131072, 3, 655356, 196608, 1, 720892, 196608, 1, 786428, 196608, 2, 851965, 196608, 0, 917501, 196608, 1, 983037, 196608, 1, 1048573, 196608, 1, 1114109, 196608, 2, 1114110, 65536, 3, 1114111, 65536, 3, 1048576, 65536, 3, 1048577, 65536, 3, 1048579, 65536, 3, 1048578, 65536, 3, 1048580, 65536, 3, 1048581, 65536, 3, 1048582, 65536, 3, 1048583, 65536, 3, 1048584, 131072, 3, 983048, 196608, 1, 786439, 196608, 1, 851975, 196608, 2, 917512, 196608, 0, 655366, 196608, 2, 720903, 196608, 0, 524293, 196608, 2, 589830, 196608, 0, 458757, 196608, 1, 393220, 0, 3, 393221, 65536, 3, 393222, 131072, 3, 458759, 0, 3, 458761, 131072, 3, 458760, 65536, 3, 524298, 196608, 3, 589835, 0, 3, 589836, 131072, 3, 655372, 196608, 2, 655373, 196608, 0, 720909, 196608, 1, 983051, 196608, 0, 917516, 196608, 2, 851980, 196608, 0, 786445, 196608, 2, 1114123, 196608, 1, 1048587, 196608, 1, 1179659, 196608, 2, 1245194, 196608, 3, 786432, 196608, 3, 786437, 196608, 3, 589826, 196608, 3, 655359, 196608, 3, 393217, 196608, 3)
 
 [node name="Clepto the Cat" parent="." instance=ExtResource("2_v106t")]
 position = Vector2(205, 584)
+
+[node name="Danger" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Danger" instance=ExtResource("3_mgrkh")]
+position = Vector2(27, 165)

@@ -307,6 +307,7 @@ point_count = 4
 
 [node name="Clepto the Cat" type="CharacterBody2D"]
 scale = Vector2(2.2, 0.76)
+collision_mask = 14
 script = ExtResource("1_beck8")
 
 [node name="Camera2D" type="Camera2D" parent="."]

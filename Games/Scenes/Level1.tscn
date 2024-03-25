@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://xedxfxf70n0g"]
+[gd_scene load_steps=46 format=3 uid="uid://xedxfxf70n0g"]
 
 [ext_resource type="Texture2D" uid="uid://dkctir1ge7a14" path="res://Assets/CleptoTileSetWIP.png" id="1_36qij"]
 [ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="2_7j3mx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://2ebgwp3msm8n" path="res://Assets/16CatSpritesl.png" id="4_5cafa"]
 [ext_resource type="AudioStream" uid="uid://ci8x5soxc0yk8" path="res://Sounds/kitty-meow-85182.ogg" id="5_e3e0j"]
 [ext_resource type="PackedScene" uid="uid://wctwfg6frquw" path="res://Scenes/EndArea.tscn" id="6_plnas"]
+[ext_resource type="PackedScene" uid="uid://d1ex3berh5ebo" path="res://Scenes/Laser.tscn" id="7_x1il8"]
+[ext_resource type="PackedScene" uid="uid://i68apaqnq0gt" path="res://Scenes/clepto_the_cat.tscn" id="8_7aa88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2dfh"]
 texture = ExtResource("1_36qij")
@@ -155,7 +157,7 @@ texture = ExtResource("1_36qij")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_57uav"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Normal"
 terrain_set_0/terrain_0/color = Color(0.494118, 0.25098, 0.65098, 1)
@@ -470,8 +472,12 @@ tile_set = SubResource("TileSet_57uav")
 format = 2
 layer_0/tile_data = PackedInt32Array(983040, 65536, 2, 983041, 65536, 2, 983042, 65536, 3, 983043, 65536, 3, 983044, 65536, 3, 983045, 65536, 3, 983046, 65536, 3, 983047, 65536, 3, 983048, 65536, 2, 983049, 65536, 2, 983050, 131072, 2, 983051, 65536, 3, 983052, 65536, 3, 983053, 65536, 3, 983054, 65536, 3, 983055, 65536, 3, 983056, 65536, 3, 983057, 65536, 3, 983058, 65536, 3, 983059, 65536, 3, 851968, 131072, 1, 917504, 65536, 1, 917505, 131072, 0, 917512, 0, 0, 917513, 65536, 1, 917514, 131072, 0, 851977, 196608, 0, 786436, 0, 3, 786437, 131072, 3, 720902, 131072, 3, 720901, 0, 0, 589833, 196608, 3, 458758, 196608, 3, 327680, 131072, 1, 393216, 131072, 1, 458752, 131072, 1, 524288, 131072, 1, 589824, 131072, 1, 655360, 131072, 1, 720896, 131072, 1, 786432, 131072, 1, 262144, 131072, 1, 393218, 0, 3, 393219, 131072, 3, 1048575, 0, 2, 983039, 0, 1, 917503, 0, 1, 851967, 0, 1, 786431, 0, 1, 720895, 0, 1, 655359, 0, 1, 589823, 0, 1, 524287, 0, 1, 458751, 0, 1, 393215, 0, 1, 327679, 0, 1, 262143, 0, 1, 196608, 131072, 1, 131072, 131072, 1, 65536, 65536, 1, 65535, 0, 0, 131071, 0, 1, 196607, 0, 1, 0, 65536, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 131072, 0, 65543, 131072, 2, 65542, 65536, 2, 65540, 65536, 2, 65539, 65536, 2, 65538, 65536, 2, 65537, 65536, 2, 65541, 65536, 2, 983060, 65536, 3, 983061, 65536, 3, 983062, 65536, 3, 983063, 65536, 3, 983064, 65536, 3, 983065, 65536, 3, 983066, 65536, 3, 983067, 65536, 3, 983068, 131072, 2, 393226, 0, 3, 393227, 65536, 2, 393228, 65536, 2, 393229, 131072, 3, 327692, 131072, 0, 327691, 0, 0, 196624, 0, 3, 196625, 65536, 3, 196626, 131072, 3, 12, 131072, 3, 11, 65536, 3, 10, 0, 3, 917532, 196608, 1, 851996, 196608, 1, 786460, 196608, 1, 720924, 196608, 1, 655388, 196608, 1, 589852, 196608, 1, 524316, 196608, 1, 458780, 196608, 1, 393244, 196608, 1, 327708, 196608, 1, 262172, 196608, 1, 196636, 196608, 1, 131100, 196608, 1, 65564, 196608, 1, 28, 196608, 1, -65508, 196608, 1, -131044, 196608, 0, 786456, 196608, 2, 720920, 196608, 1, 655384, 196608, 1, 589848, 196608, 1, 524312, 196608, 1, 458776, 196608, 1, 393240, 196608, 1, 327704, 196608, 1, 262168, 196608, 1, 196632, 196608, 1, 131096, 196608, 1, 65560, 196608, 1, -131048, 196608, 0, -65512, 196608, 1, 24, 196608, 1, -131049, 65536, 3, -131050, 65536, 3, -131051, 0, 3, 720917, 131072, 3, 720916, 65536, 3, 720915, 0, 3)
 
+[node name="Clepto the Cat2" parent="." instance=ExtResource("8_7aa88")]
+position = Vector2(192, 512)
+
 [node name="Clepto the Cat" type="CharacterBody2D" parent="."]
-position = Vector2(193, 584)
+visible = false
+position = Vector2(192, 512)
 scale = Vector2(2.2, 0.76)
 script = ExtResource("2_7j3mx")
 
@@ -518,4 +524,9 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_wf17o")
 
 [node name="EndArea" parent="." instance=ExtResource("6_plnas")]
-position = Vector2(1000, 563)
+position = Vector2(1310, 308)
+
+[node name="Danger" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Danger" instance=ExtResource("7_x1il8")]
+position = Vector2(832, 448)

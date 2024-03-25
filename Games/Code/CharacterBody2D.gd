@@ -17,78 +17,82 @@ var walljump_array = [false, false, false, false, false, false, false, false, fa
 @onready var DUST_PARTICLES = $DustParticles
 @onready var MEOW_AUDIO = $MeowAudio
 
+var DEAD = false
+
 # Code that runs at the start of the game
 func _ready():
 	pass
 
 # This is code that runs every single frame
 func _physics_process(delta):
-	_animate()
 	
-	walljump_ready = false
-	
-	
-	#Controls meow
-	if Input.is_action_just_pressed("meow"):
-		MEOW_AUDIO.play()
-		MEOW_AUDIO.pitch_scale = randf_range(.85, 1.2)
-	
-	# Set x variable of input to right minus left
-	INPUT_VECTOR.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	INPUT_VECTOR.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	#PRINT CHECKERS
-	#print(velocity.x)
-	#print(INPUT_VECTOR.x)
-	#print(walljump_array)
-	#print(tired)
-	
-	# Set x velocity to play x input scaled by a speed variable
-	if (INPUT_VECTOR.x != 0):
-		velocity.x += INPUT_VECTOR.x * ACCELERATION * .05
-		if (velocity.x >= SPEED or velocity.x <= -SPEED):
-			velocity.x = INPUT_VECTOR.x * SPEED
-		#clampf()
-	# Make the player decelerate to 0 when nothing pressed
-	elif (INPUT_VECTOR.x == 0):
-		velocity.x = lerpf(velocity.x,0,0.2)
-	
-	# Adding gravity to y velocity
-	velocity.y += GRAVITY
-	
-	#Improves aerial movement, mainly allowing player to climb onto something directly above them
-	if !is_on_floor() and !is_on_wall():
-		if (INPUT_VECTOR.x != 0):
-			velocity.x += INPUT_VECTOR.x * ACCELERATION * .02
-	
-	#Jump
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		velocity.y = JUMP_STRENGTH
-		ANIM_PLAYER.seek(0)
-		ANIM_PLAYER.play("jumpSquish")
+	if DEAD == false:
+		_animate()
 		
-	#Begin wallcling/climbing
-	if tired <= TIRED_FRAMES:
-		if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and is_on_wall_only():
-			walljump_ready = true
-			velocity.y = 0
-			if INPUT_VECTOR.y != 0:
-				tired += 1
-				velocity.y += INPUT_VECTOR.y * CLIMB_SPEED
-	
-	#Manages the buffer time on whether the player can walljump or not
-	walljump_array.pop_front()
-	walljump_array.push_back(walljump_ready)
-	
-	#Walljump mechanic, based on whether they are wallclinging
-	if walljump_array.has(true):
-		if Input.is_action_just_pressed("move_up") and !is_on_wall():
-			#tired = 0
-			tired += 10
-			velocity.y = JUMP_STRENGTH + 300
-			velocity.x = INPUT_VECTOR.x * (SPEED + 150)
-	
-	# Move the character according to velocity variable
-	move_and_slide()
+		walljump_ready = false
+		
+		
+		#Controls meow
+		if Input.is_action_just_pressed("meow"):
+			MEOW_AUDIO.play()
+			MEOW_AUDIO.pitch_scale = randf_range(.85, 1.2)
+		
+		# Set x variable of input to right minus left
+		INPUT_VECTOR.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		INPUT_VECTOR.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		#PRINT CHECKERS
+		#print(velocity.x)
+		#print(INPUT_VECTOR.x)
+		#print(walljump_array)
+		#print(tired)
+		
+		# Set x velocity to play x input scaled by a speed variable
+		if (INPUT_VECTOR.x != 0):
+			velocity.x += INPUT_VECTOR.x * ACCELERATION * .05
+			if (velocity.x >= SPEED or velocity.x <= -SPEED):
+				velocity.x = INPUT_VECTOR.x * SPEED
+			#clampf()
+		# Make the player decelerate to 0 when nothing pressed
+		elif (INPUT_VECTOR.x == 0):
+			velocity.x = lerpf(velocity.x,0,0.2)
+		
+		# Adding gravity to y velocity
+		velocity.y += GRAVITY
+		
+		#Improves aerial movement, mainly allowing player to climb onto something directly above them
+		if !is_on_floor() and !is_on_wall():
+			if (INPUT_VECTOR.x != 0):
+				velocity.x += INPUT_VECTOR.x * ACCELERATION * .02
+		
+		#Jump
+		if Input.is_action_just_pressed("move_up") and is_on_floor():
+			velocity.y = JUMP_STRENGTH
+			ANIM_PLAYER.seek(0)
+			ANIM_PLAYER.play("jumpSquish")
+			
+		#Begin wallcling/climbing
+		if tired <= TIRED_FRAMES:
+			if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and is_on_wall_only():
+				walljump_ready = true
+				velocity.y = 0
+				if INPUT_VECTOR.y != 0:
+					tired += 1
+					velocity.y += INPUT_VECTOR.y * CLIMB_SPEED
+		
+		#Manages the buffer time on whether the player can walljump or not
+		walljump_array.pop_front()
+		walljump_array.push_back(walljump_ready)
+		
+		#Walljump mechanic, based on whether they are wallclinging
+		if walljump_array.has(true):
+			if Input.is_action_just_pressed("move_up") and !is_on_wall():
+				#tired = 0
+				tired += 10
+				velocity.y = JUMP_STRENGTH + 300
+				velocity.x = INPUT_VECTOR.x * (SPEED + 150)
+		
+		# Move the character according to velocity variable
+		move_and_slide()
 
 func _animate():
 	
@@ -136,3 +140,8 @@ func _animate():
 			elif (INPUT_VECTOR.x < 0):
 				ANIM_SPRITE.flip_h = true
 			DUST_PARTICLES.emitting = false
+
+func _die():
+	DEAD = true
+	ANIM_SPRITE.play("crouch")
+	get_parent().get_parent()._restart()
