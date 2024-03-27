@@ -7,6 +7,8 @@ extends Node
 @onready var RELOAD
 @onready var ADVANCING: bool
 
+var LEVEL_LIST = ["Level1", "Level2", "Level3"]
+
 @export var ANIM: AnimationPlayer
 
 # Code that runs at the start of the game
@@ -20,6 +22,7 @@ func _physics_process(delta):
 
 func _update_scene(NEXT_DESTINATION_NAME):
 	NEXT_LEVEL_NAME = NEXT_DESTINATION_NAME
+	NEXT_DESTINATION_NAME = LEVEL_LIST[LEVEL_LIST.find(NEXT_DESTINATION_NAME) + 1]
 	ADVANCING = true
 	ANIM.play("fade_in")
 

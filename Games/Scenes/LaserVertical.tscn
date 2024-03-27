@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds5ny5d2t4ppo"]
+
+[ext_resource type="PackedScene" uid="uid://d1ex3berh5ebo" path="res://Scenes/Laser.tscn" id="1_h8fwg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" parent="." instance=ExtResource("1_h8fwg")]
+position = Vector2(64, 0)
+rotation = 1.5708

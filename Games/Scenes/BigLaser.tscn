@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqgt64clusqwh"]
+
+[ext_resource type="PackedScene" uid="uid://d1ex3berh5ebo" path="res://Scenes/Laser.tscn" id="1_gkutr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" parent="." instance=ExtResource("1_gkutr")]
+
+[node name="Area2D2" parent="." instance=ExtResource("1_gkutr")]
+position = Vector2(64, 0)
+
+[node name="Area2D3" parent="." instance=ExtResource("1_gkutr")]
+position = Vector2(128, 0)
