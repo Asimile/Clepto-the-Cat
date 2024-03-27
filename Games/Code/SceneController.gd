@@ -8,6 +8,7 @@ extends Node
 @onready var ADVANCING: bool
 
 var LEVEL_LIST = ["Level1", "Level2", "Level3"]
+var next_level_counter = 1
 
 @export var ANIM: AnimationPlayer
 
@@ -18,11 +19,11 @@ func _ready():
 # This is code that runs every single frame
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dev"):
-		_update_scene("Level2")
+		_update_scene(LEVEL_LIST[next_level_counter])
 
 func _update_scene(NEXT_DESTINATION_NAME):
 	NEXT_LEVEL_NAME = NEXT_DESTINATION_NAME
-	NEXT_DESTINATION_NAME = LEVEL_LIST[LEVEL_LIST.find(NEXT_DESTINATION_NAME) + 1]
+	#NEXT_DESTINATION_NAME = LEVEL_LIST[LEVEL_LIST.find(NEXT_DESTINATION_NAME) + 1]
 	ADVANCING = true
 	ANIM.play("fade_in")
 
@@ -33,6 +34,7 @@ func _restart():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fade_in":
 		if ADVANCING == true:
+			next_level_counter += 1
 			NEXT_LEVEL = load("res://Scenes/" + NEXT_LEVEL_NAME + ".tscn").instantiate()
 			NEXT_LEVEL.visible = false
 			add_child(NEXT_LEVEL)
