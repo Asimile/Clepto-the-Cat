@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://chndol8ooalgo"]
+
+[ext_resource type="Script" path="res://Code/Enemy.gd" id="1_wx3qu"]
+[ext_resource type="Texture2D" uid="uid://dy1abq5upf4mk" path="res://icon.svg" id="2_iivkc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_626fv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iivkc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iivkc")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6th8m"]
+size = Vector2(58, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rlki"]
+size = Vector2(48, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne8jm"]
+size = Vector2(64, 28)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_wx3qu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_626fv")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_6th8m")
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemyArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2(-1, -28)
+shape = SubResource("RectangleShape2D_7rlki")
+debug_color = Color(0, 0.65098, 0.0862745, 0.419608)
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_ne8jm")
+debug_color = Color(0.996078, 0, 0.223529, 0.419608)
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="EnemyArea" to="." method="_on_enemy_area_body_entered"]
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]

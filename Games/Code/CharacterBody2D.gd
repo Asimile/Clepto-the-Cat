@@ -66,9 +66,7 @@ func _physics_process(delta):
 		
 		#Jump
 		if Input.is_action_just_pressed("move_up") and is_on_floor():
-			velocity.y = JUMP_STRENGTH
-			ANIM_PLAYER.seek(0)
-			ANIM_PLAYER.play("jumpSquish")
+			jump()
 			
 		#Begin wallcling/climbing
 		if tired <= TIRED_FRAMES:
@@ -140,6 +138,11 @@ func _animate():
 			elif (INPUT_VECTOR.x < 0):
 				ANIM_SPRITE.flip_h = true
 			DUST_PARTICLES.emitting = false
+
+func jump():
+	velocity.y = JUMP_STRENGTH
+	ANIM_PLAYER.seek(0)
+	ANIM_PLAYER.play("jumpSquish")
 
 func _die():
 	DEAD = true
