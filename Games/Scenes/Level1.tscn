@@ -475,6 +475,7 @@ layer_0/tile_data = PackedInt32Array(1769477, 131072, 2, 1703941, 131072, 1, 163
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("2_nj0wj")]
+position = Vector2(983, 370)
 
 [node name="Clepto the Cat2" parent="." instance=ExtResource("8_7aa88")]
 position = Vector2(198, 458)

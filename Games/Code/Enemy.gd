@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var WALK_SPEED = 100.0
 var GRAVITY = 30
 var JUMP_VELOCITY = -400.0
-@export var DIRECTION = 1
+@export var DIRECTION = -1
 
 @onready var PLAYER = get_parent().get_parent().get_node("Clepto the Cat2")
 
@@ -27,10 +27,11 @@ func _physics_process(delta):
 		animate()
 
 func animate():
-	if velocity.x != 0:
-		$AnimatedSprite2D.play("Walk")
-	else:
-		$AnimatedSprite2D.play("Idle")
+	#if velocity.x != 0:
+		#$AnimatedSprite2D.play("Walk")
+	#else:
+		#$AnimatedSprite2D.play("Idle")
+	$AnimatedSprite2D.play("Walk")
 
 func _die():
 	DEAD = true

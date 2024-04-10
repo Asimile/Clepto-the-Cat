@@ -1,25 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://chndol8ooalgo"]
+[gd_scene load_steps=11 format=3 uid="uid://chndol8ooalgo"]
 
 [ext_resource type="Script" path="res://Code/Enemy.gd" id="1_wx3qu"]
-[ext_resource type="Texture2D" uid="uid://dy1abq5upf4mk" path="res://icon.svg" id="2_iivkc"]
+[ext_resource type="Texture2D" uid="uid://dn107a54ei01" path="res://Assets/CleptoRobotTileSet.png" id="2_vta4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1row"]
+atlas = ExtResource("2_vta4s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ckdh"]
+atlas = ExtResource("2_vta4s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g6c7"]
+atlas = ExtResource("2_vta4s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsgmx"]
+atlas = ExtResource("2_vta4s")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_626fv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_iivkc")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_j1row")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_iivkc")
+"texture": SubResource("AtlasTexture_3ckdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g6c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsgmx")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6th8m"]
@@ -37,9 +54,9 @@ collision_mask = 2
 script = ExtResource("1_wx3qu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(4.24991, 3.99003)
 sprite_frames = SubResource("SpriteFrames_626fv")
-animation = &"Idle"
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
@@ -50,6 +67,7 @@ one_shot = true
 
 [node name="EnemyArea" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 position = Vector2(-1, -28)
