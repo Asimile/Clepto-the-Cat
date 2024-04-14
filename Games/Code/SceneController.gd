@@ -8,7 +8,7 @@ extends Node
 @onready var ADVANCING: bool
 
 # Right now this level loader works well. Doesn't even need a placeholder at the end of the array
-var LEVEL_LIST = ["Level1", "Level2", "Level3"]
+var LEVEL_LIST = ["Level1", "Level2", "Level3", "Level4"]
 var next_level_counter = 1
 
 @export var ANIM: AnimationPlayer

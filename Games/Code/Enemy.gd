@@ -11,6 +11,7 @@ var JUMP_VELOCITY = -400.0
 
 @onready var ANIM_SPRITE = $AnimatedSprite2D
 @onready var WALL_CAST = $RayCast2D
+@onready var DUST_PARTICLES = $RoboDustParticles
 @onready var PLAYER = get_parent().get_parent().get_node("Clepto the Cat2")
 
 # This is a ground based enemy from Luke's video. I'm not implementing a flying one right now
@@ -29,7 +30,7 @@ func _physics_process(delta):
 		if WALL_CAST.is_colliding():
 			WALL_CAST.target_position.x = WALL_CAST.target_position.x * -1
 			DIRECTION = DIRECTION * -1
-			
+			DUST_PARTICLES.direction.x = -DIRECTION
 		
 		move_and_slide()
 		animate()
@@ -40,7 +41,7 @@ func animate():
 	#else:
 		#$AnimatedSprite2D.play("Idle")
 	ANIM_SPRITE.play("Walk")
-	
+	DUST_PARTICLES.direction.x = DIRECTION
 	if velocity.x < 0:
 		ANIM_SPRITE.flip_h = false
 	else:

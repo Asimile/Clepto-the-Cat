@@ -1,7 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://chndol8ooalgo"]
+[gd_scene load_steps=13 format=3 uid="uid://chndol8ooalgo"]
 
 [ext_resource type="Script" path="res://Code/Enemy.gd" id="1_wx3qu"]
 [ext_resource type="Texture2D" uid="uid://dn107a54ei01" path="res://Assets/CleptoRobotTileSet.png" id="2_vta4s"]
+
+[sub_resource type="Curve" id="Curve_d0hct"]
+max_value = 3.0
+_data = [Vector2(0.222222, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.887262), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8ep7o"]
+offsets = PackedFloat32Array(0, 0.788845, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1row"]
 atlas = ExtResource("2_vta4s")
@@ -52,6 +61,21 @@ size = Vector2(68, 28)
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_wx3qu")
+
+[node name="RoboDustParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 32)
+lifetime = 1.5
+spread = 0.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+scale_amount_min = 9.0
+scale_amount_max = 9.0
+scale_amount_curve = SubResource("Curve_d0hct")
+color = Color(0.662745, 0.662745, 0.662745, 1)
+color_ramp = SubResource("Gradient_8ep7o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.24991, 3.99003)
