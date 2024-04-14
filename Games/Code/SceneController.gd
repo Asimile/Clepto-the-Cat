@@ -7,7 +7,8 @@ extends Node
 @onready var RELOAD
 @onready var ADVANCING: bool
 
-var LEVEL_LIST = ["Level1", "Level2", "Level3", "temp"]
+# Right now this level loader works well. Doesn't even need a placeholder at the end of the array
+var LEVEL_LIST = ["Level1", "Level2", "Level3"]
 var next_level_counter = 1
 
 @export var ANIM: AnimationPlayer
@@ -19,11 +20,11 @@ func _ready():
 # This is code that runs every single frame
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dev"):
-		_update_scene(LEVEL_LIST[next_level_counter])
+		_update_scene()
 
-func _update_scene(NEXT_DESTINATION_NAME):
-	NEXT_LEVEL_NAME = NEXT_DESTINATION_NAME
-	NEXT_DESTINATION_NAME = LEVEL_LIST[LEVEL_LIST.find(NEXT_DESTINATION_NAME) + 1]
+func _update_scene():
+	NEXT_LEVEL_NAME = LEVEL_LIST[LEVEL_LIST.find(CURRENT_LEVEL_NAME) + 1]
+	#NEXT_DESTINATION_NAME = LEVEL_LIST[LEVEL_LIST.find(NEXT_DESTINATION_NAME) + 1]
 	ADVANCING = true
 	ANIM.play("fade_in")
 

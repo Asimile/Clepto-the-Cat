@@ -184,4 +184,4 @@ position = Vector2(584, 1355)
 position = Vector2(968, 1355)
 
 [node name="EndArea" parent="." instance=ExtResource("4_0yx1w")]
-position = Vector2(1544, 1291)
+position = Vector2(1544, 1227)
