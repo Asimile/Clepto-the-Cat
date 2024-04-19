@@ -3,44 +3,41 @@
 [ext_resource type="Script" path="res://Code/EndArea.gd" id="1_mdjur"]
 [ext_resource type="Texture2D" uid="uid://ca1mslcb8pyjk" path="res://Assets/CleptoHatch.png" id="2_po51d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pvd5h"]
-radius = 43.0465
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_goa5e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_41uy0"]
 atlas = ExtResource("2_po51d")
-region = Rect2(0, 0, 48, 32)
+region = Rect2(0, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnyhp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr2cw"]
 atlas = ExtResource("2_po51d")
-region = Rect2(48, 0, 48, 32)
+region = Rect2(48, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4fj1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_78xtl"]
 atlas = ExtResource("2_po51d")
-region = Rect2(96, 0, 48, 32)
+region = Rect2(96, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7nhv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_31g3v"]
 atlas = ExtResource("2_po51d")
-region = Rect2(144, 0, 48, 32)
+region = Rect2(144, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5f2qm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdya0"]
 atlas = ExtResource("2_po51d")
-region = Rect2(192, 0, 48, 32)
+region = Rect2(192, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6r2wn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g566l"]
 atlas = ExtResource("2_po51d")
-region = Rect2(240, 0, 48, 32)
+region = Rect2(240, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uapev"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aetak"]
 atlas = ExtResource("2_po51d")
-region = Rect2(288, 0, 48, 32)
+region = Rect2(288, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2605g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrnvr"]
 atlas = ExtResource("2_po51d")
-region = Rect2(336, 0, 48, 32)
+region = Rect2(336, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6so87"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3wq4"]
 atlas = ExtResource("2_po51d")
-region = Rect2(384, 0, 48, 32)
+region = Rect2(384, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_702um"]
 atlas = ExtResource("2_po51d")
@@ -50,31 +47,31 @@ region = Rect2(0, 0, 48, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_goa5e")
+"texture": SubResource("AtlasTexture_41uy0")
 }, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_jnyhp")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_q4fj1")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fr2cw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x7nhv")
+"texture": SubResource("AtlasTexture_78xtl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5f2qm")
+"texture": SubResource("AtlasTexture_31g3v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6r2wn")
+"texture": SubResource("AtlasTexture_tdya0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uapev")
+"texture": SubResource("AtlasTexture_g566l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2605g")
+"texture": SubResource("AtlasTexture_aetak")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6so87")
+"texture": SubResource("AtlasTexture_rrnvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3wq4")
 }],
 "loop": false,
 "name": &"close",
@@ -89,15 +86,12 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvd5h"]
+radius = 43.0465
+
 [node name="EndArea" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_mdjur")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 124)
-scale = Vector2(1.32995, 1.19505)
-shape = SubResource("CircleShape2D_pvd5h")
-debug_color = Color(0.376471, 0.615686, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -113,6 +107,12 @@ animation = &"close"
 [node name="EndTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 104)
+scale = Vector2(1.32995, 0.31505)
+shape = SubResource("CircleShape2D_pvd5h")
+debug_color = Color(0.376471, 0.615686, 0, 0.419608)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

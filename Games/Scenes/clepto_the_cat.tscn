@@ -1,7 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://i68apaqnq0gt"]
+[gd_scene load_steps=39 format=3 uid="uid://i68apaqnq0gt"]
 
 [ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="1_beck8"]
-[ext_resource type="Texture2D" uid="uid://b64trne4b6utb" path="res://Assets/CityPixelBackgrounds/city 4/9.png" id="2_vi0ji"]
 [ext_resource type="Texture2D" uid="uid://2ebgwp3msm8n" path="res://Assets/16CatSpritesl.png" id="3_nxhhg"]
 [ext_resource type="AudioStream" uid="uid://ci8x5soxc0yk8" path="res://Sounds/kitty-meow-85182.ogg" id="4_36558"]
 
@@ -309,15 +308,6 @@ point_count = 4
 scale = Vector2(2.2, 0.76)
 collision_mask = 30
 script = ExtResource("1_beck8")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -150)
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
-z_index = -100
-scale = Vector2(0.3, 1)
-texture = ExtResource("2_vi0ji")
-offset = Vector2(0, -150)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.384)

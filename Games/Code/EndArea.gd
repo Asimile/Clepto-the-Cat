@@ -20,6 +20,7 @@ func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 	
 func _on_body_entered(body):
+	body.set_control(false)
 	ANIM_SPRITE.play("close")
 	TIMER.start()
 	#get_parent().get_parent()._update_scene(NEXT_LEVEL)

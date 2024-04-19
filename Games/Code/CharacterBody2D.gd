@@ -17,6 +17,7 @@ var walljump_array = [false, false, false, false, false, false, false, false, fa
 @onready var DUST_PARTICLES = $DustParticles
 @onready var MEOW_AUDIO = $MeowAudio
 
+var CAN_CONTROL = true
 var DEAD = false
 
 # Code that runs at the start of the game
@@ -26,7 +27,7 @@ func _ready():
 # This is code that runs every single frame
 func _physics_process(delta):
 	
-	if DEAD == false:
+	if DEAD == false and CAN_CONTROL == true:
 		_animate()
 		
 		walljump_ready = false
@@ -69,12 +70,13 @@ func _physics_process(delta):
 			jump()
 			
 		#Begin wallcling/climbing
+		# Tiredness mechanics are currently disabled. Re-enable if sweat sprite is made
 		if tired <= TIRED_FRAMES:
 			if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and is_on_wall_only():
 				walljump_ready = true
 				velocity.y = 0
 				if INPUT_VECTOR.y != 0:
-					tired += 1
+					#tired += 1
 					velocity.y += INPUT_VECTOR.y * CLIMB_SPEED
 		
 		#Manages the buffer time on whether the player can walljump or not
@@ -83,9 +85,9 @@ func _physics_process(delta):
 		
 		#Walljump mechanic, based on whether they are wallclinging
 		if walljump_array.has(true):
-			if Input.is_action_just_pressed("move_up") and !is_on_wall():
+			if (Input.is_action_just_pressed("move_up") and !is_on_wall()):
 				#tired = 0
-				tired += 10
+				#tired += 10
 				velocity.y = JUMP_STRENGTH + 300
 				velocity.x = INPUT_VECTOR.x * (SPEED + 150)
 		
@@ -148,3 +150,6 @@ func _die():
 	DEAD = true
 	ANIM_SPRITE.play("crouch")
 	get_parent().get_parent()._restart()
+
+func set_control(can_control: bool):
+	CAN_CONTROL = can_control

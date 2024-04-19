@@ -109,8 +109,12 @@ position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_ne8jm")
 debug_color = Color(0.996078, 0, 0.223529, 0.419608)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="WallCast" type="RayCast2D" parent="."]
 target_position = Vector2(-40, 0)
+collision_mask = 18
+
+[node name="FloorCast" type="RayCast2D" parent="."]
+target_position = Vector2(-10, 39)
 collision_mask = 2
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -10,9 +10,10 @@ var JUMP_VELOCITY = -400.0
 @export var DIRECTION = -1
 
 @onready var ANIM_SPRITE = $AnimatedSprite2D
-@onready var WALL_CAST = $RayCast2D
+@onready var WALL_CAST = $WallCast
+@onready var FLOOR_CAST = $FloorCast
 @onready var DUST_PARTICLES = $RoboDustParticles
-@onready var PLAYER = get_parent().get_parent().get_node("Clepto the Cat2")
+@onready var PLAYER = get_parent().get_parent().get_node("Clepto the Cat")
 
 # This is a ground based enemy from Luke's video. I'm not implementing a flying one right now
 # I did watch the flying enemy stuff though
@@ -27,8 +28,9 @@ func _physics_process(delta):
 			velocity.y += GRAVITY
 		
 		# Code for when the raycast hits a wall and enemy needs to turn around
-		if WALL_CAST.is_colliding():
+		if WALL_CAST.is_colliding() or (not FLOOR_CAST.is_colliding()):
 			WALL_CAST.target_position.x = WALL_CAST.target_position.x * -1
+			FLOOR_CAST.target_position.x = FLOOR_CAST.target_position.x * -1
 			DIRECTION = DIRECTION * -1
 			DUST_PARTICLES.direction.x = -DIRECTION
 		
@@ -68,3 +70,7 @@ func _on_enemy_area_body_entered(body):
 func _on_hurt_area_body_entered(body):
 	body._die()
 
+func turn_around():
+	WALL_CAST.target_position.x = WALL_CAST.target_position.x * -1
+	DIRECTION = DIRECTION * -1
+	DUST_PARTICLES.direction.x = -DIRECTION
