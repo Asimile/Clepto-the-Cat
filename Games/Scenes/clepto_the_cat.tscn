@@ -1,8 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://i68apaqnq0gt"]
+[gd_scene load_steps=43 format=3 uid="uid://i68apaqnq0gt"]
 
 [ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="1_beck8"]
 [ext_resource type="Texture2D" uid="uid://2ebgwp3msm8n" path="res://Assets/16CatSpritesl.png" id="3_nxhhg"]
 [ext_resource type="AudioStream" uid="uid://ci8x5soxc0yk8" path="res://Sounds/kitty-meow-85182.ogg" id="4_36558"]
+[ext_resource type="AudioStream" uid="uid://7v31aovladng" path="res://Sounds/cleptoCrouch.ogg" id="4_mmcnv"]
+[ext_resource type="AudioStream" uid="uid://cad3x6v74b1wp" path="res://Sounds/cleptoJump.ogg" id="5_t0fkp"]
+[ext_resource type="AudioStream" uid="uid://dfmmpy1b6hhw7" path="res://Sounds/cleptoWallJump.ogg" id="6_q18on"]
+[ext_resource type="AudioStream" uid="uid://bwysih4ebq3i" path="res://Sounds/cleptoWalk.ogg" id="7_rhcsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_773pd"]
 size = Vector2(16.6667, 24.2498)
@@ -341,3 +345,16 @@ angle_max = 360.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_wf17o")
+
+[node name="CrouchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mmcnv")
+volume_db = 6.0
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t0fkp")
+
+[node name="WalljumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_q18on")
+
+[node name="WalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rhcsj")

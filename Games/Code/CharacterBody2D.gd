@@ -9,6 +9,7 @@ var ACCELERATION = 400
 var TIRED_FRAMES = 150
 var tired = 0
 var walljump_ready = false
+var crouch_audio_played = false
 #Probably a better way to do this
 var walljump_array = [false, false, false, false, false, false, false, false, false, false, false, false, false]
 
@@ -16,6 +17,11 @@ var walljump_array = [false, false, false, false, false, false, false, false, fa
 @onready var ANIM_PLAYER = $AnimationPlayer
 @onready var DUST_PARTICLES = $DustParticles
 @onready var MEOW_AUDIO = $MeowAudio
+@onready var CROUCH_AUDIO = $CrouchAudio
+@onready var JUMP_AUDIO = $JumpAudio
+@onready var WALLJUMP_AUDIO = $WalljumpAudio
+# Problem with WALK_AUDIO?? Check where we try to stop it in _animation when jumping
+@onready var WALK_AUDIO = $WalkAudio
 
 var CAN_CONTROL = true
 var DEAD = false
@@ -67,6 +73,8 @@ func _physics_process(delta):
 		
 		#Jump
 		if Input.is_action_just_pressed("move_up") and is_on_floor():
+			if JUMP_AUDIO.playing == false:
+				JUMP_AUDIO.play()
 			jump()
 			
 		#Begin wallcling/climbing
@@ -86,6 +94,8 @@ func _physics_process(delta):
 		#Walljump mechanic, based on whether they are wallclinging
 		if walljump_array.has(true):
 			if (Input.is_action_just_pressed("move_up") and !is_on_wall()):
+				if WALLJUMP_AUDIO.playing == false:
+					WALLJUMP_AUDIO.play()
 				#tired = 0
 				#tired += 10
 				velocity.y = JUMP_STRENGTH + 300
@@ -95,23 +105,29 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _animate():
-	
 	if (is_on_floor()):
-		# Placeholder comment of starting idle before totally stopping. Messes with fliph'
-		#Real quick helps with physics. Resets tired to 0 when on the floor.
 		tired = 0
 		#if (velocity.x <= 10 and velocity.x >= -10):
 		#Crouched or idle
 		if (INPUT_VECTOR.x == 0):
+			WALK_AUDIO.stop()
 			DUST_PARTICLES.emitting = false
 			if (INPUT_VECTOR.y > 0):
-				#Crouch is not animated. Still needs static sprite
 				ANIM_SPRITE.play("crouch")
+				# I'll see if I leave crouch sound in
+				if CROUCH_AUDIO.playing == false and crouch_audio_played == false:
+					CROUCH_AUDIO.play()
+					crouch_audio_played = true
 			else:
 				ANIM_SPRITE.play("idle")
+				crouch_audio_played = false
 		#Walking
 		else: 
+			crouch_audio_played = true
 			ANIM_SPRITE.play("walk")
+			
+			if WALK_AUDIO.playing == false:
+				WALK_AUDIO.play()
 			DUST_PARTICLES.emitting = true
 			DUST_PARTICLES.direction.x = -INPUT_VECTOR.x
 			if INPUT_VECTOR.x > 0:
@@ -120,6 +136,9 @@ func _animate():
 				ANIM_SPRITE.flip_h = true
 	#Jumping/Falling
 	elif !is_on_floor() and !is_on_wall():
+		# BIG PROBLEM. IDK WHATS GOING ON HERE, OUT OF SCOPE SOMEHOW????
+		if WALK_AUDIO != null:
+			WALK_AUDIO.stop()
 		if velocity.y <= 0:
 			ANIM_SPRITE.play("jump")
 		else:
@@ -131,6 +150,7 @@ func _animate():
 		DUST_PARTICLES.emitting = false
 	#Wallclimbing
 	elif tired <= TIRED_FRAMES:
+		WALK_AUDIO.stop()
 		if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and is_on_wall_only():
 			ANIM_SPRITE.play("climb")
 			if INPUT_VECTOR.y == 0:
