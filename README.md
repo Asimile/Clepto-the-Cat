@@ -6,5 +6,5 @@ By the end of Spring 2024, this game will have multiple levels, obstacles, enemi
 
 And of course, a designated meow button.
 
-(Here's a video as of 4/12/24)
-https://github.com/Asimile/Clepto-the-Cat/assets/111531811/eec683ea-be15-4f1b-950b-6ca681acf6a4
+(Here's a video as of 4/22/24)
+https://github.com/Asimile/Clepto-the-Cat/assets/111531811/cdc05122-25b9-4cc3-81f9-c765814a59ca
