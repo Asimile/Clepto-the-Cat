@@ -6,5 +6,7 @@ By the end of Spring 2024, this game will have multiple levels, obstacles, enemi
 
 And of course, a designated meow button.
 
-(Here's a video as of 4/12/24)
-https://github.com/Asimile/Clepto-the-Cat/assets/111531811/eec683ea-be15-4f1b-950b-6ca681acf6a4
+(Here's a video as of 4/22/24)
+https://github.com/Asimile/Clepto-the-Cat/assets/111531811/670b8a76-96ed-4147-b486-02f2764a3c6d
+
+I unfortunately don't have a convenient way to record its audio right now, but there are unique sound effects for walking, jumping, crouching, walljumping, and the hatch closing at the end of a level.
