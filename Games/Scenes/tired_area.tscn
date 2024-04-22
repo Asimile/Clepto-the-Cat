@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://f01figpjjhrj"]
+
+[ext_resource type="Script" path="res://Scenes/TiredArea.gd" id="1_ucd47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llej8"]
+size = Vector2(112, 20)
+
+[node name="TiredArea" type="Area2D"]
+scale = Vector2(3.60762, 3.48108)
+collision_layer = 0
+script = ExtResource("1_ucd47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_llej8")
+debug_color = Color(0.619608, 0.537255, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

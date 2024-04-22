@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://xedxfxf70n0g"]
+[gd_scene load_steps=46 format=3 uid="uid://xedxfxf70n0g"]
 
 [ext_resource type="Texture2D" uid="uid://dkctir1ge7a14" path="res://Assets/CleptoTileSetWIP.png" id="1_36qij"]
 [ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="2_7j3mx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2ebgwp3msm8n" path="res://Assets/16CatSpritesl.png" id="4_5cafa"]
 [ext_resource type="AudioStream" uid="uid://ci8x5soxc0yk8" path="res://Sounds/kitty-meow-85182.ogg" id="5_e3e0j"]
 [ext_resource type="PackedScene" uid="uid://wctwfg6frquw" path="res://Scenes/EndArea.tscn" id="6_plnas"]
+[ext_resource type="Texture2D" uid="uid://ckievruvc3y2r" path="res://Assets/CleptoArrowUpPurple.png" id="8_0tim6"]
 [ext_resource type="PackedScene" uid="uid://i68apaqnq0gt" path="res://Scenes/clepto_the_cat.tscn" id="8_7aa88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2dfh"]
@@ -547,3 +548,9 @@ offset_left = 485.0
 offset_top = 87.0
 offset_right = 525.0
 offset_bottom = 110.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(1151, 290)
+scale = Vector2(1.71875, 2.01563)
+texture = ExtResource("8_0tim6")
