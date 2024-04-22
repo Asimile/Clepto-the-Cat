@@ -167,7 +167,7 @@ position = Vector2(440, -75)
 position = Vector2(-159, 17)
 
 [node name="Camera2D" type="Camera2D" parent="Clepto the Cat"]
-offset = Vector2(0, -150)
+offset = Vector2(0, -100)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(8, -309)

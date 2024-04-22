@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://wctwfg6frquw"]
+[gd_scene load_steps=16 format=3 uid="uid://wctwfg6frquw"]
 
 [ext_resource type="Script" path="res://Code/EndArea.gd" id="1_mdjur"]
 [ext_resource type="Texture2D" uid="uid://ca1mslcb8pyjk" path="res://Assets/CleptoHatch.png" id="2_po51d"]
+[ext_resource type="AudioStream" uid="uid://duw4fcyn4qmj8" path="res://Sounds/hatchClose.wav" id="2_udjlj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41uy0"]
 atlas = ExtResource("2_po51d")
@@ -97,7 +98,8 @@ script = ExtResource("1_mdjur")
 visible = false
 scale = Vector2(0.543897, 0.554232)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="HatchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_udjlj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -114,5 +116,10 @@ scale = Vector2(1.32995, 0.31505)
 shape = SubResource("CircleShape2D_pvd5h")
 debug_color = Color(0.376471, 0.615686, 0, 0.419608)
 
+[node name="SoundTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="SoundTimer" to="." method="_on_sound_timer_timeout"]
