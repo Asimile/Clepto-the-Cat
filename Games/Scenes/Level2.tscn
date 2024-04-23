@@ -161,7 +161,7 @@ terrain_set_0/terrain_0/name = "Normal"
 terrain_set_0/terrain_0/color = Color(0.494118, 0.25098, 0.65098, 1)
 sources/0 = SubResource("TileSetAtlasSource_q2dfh")
 
-[node name="Level2" type="Node2D"]
+[node name="Level5" type="Node2D"]
 position = Vector2(440, -75)
 
 [node name="Clepto the Cat" parent="." instance=ExtResource("2_v106t")]

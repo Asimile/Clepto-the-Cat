@@ -69,9 +69,9 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 z_index = 1000
 offset_left = -817.0
-offset_top = -969.0
+offset_top = -2018.0
 offset_right = 1103.0
-offset_bottom = 311.0
+offset_bottom = -423.0
 scale = Vector2(5.14818, 3.32525)
 color = Color(0, 0, 0, 1)
 

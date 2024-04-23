@@ -543,14 +543,13 @@ scale_amount_curve = SubResource("Curve_wf17o")
 [node name="EndArea" parent="." instance=ExtResource("6_plnas")]
 position = Vector2(3007, 44)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 485.0
-offset_top = 87.0
-offset_right = 525.0
-offset_bottom = 110.0
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(1151, 290)
 scale = Vector2(1.71875, 2.01563)
+texture = ExtResource("8_0tim6")
+
+[node name="CleptoArrowUpPurple" type="Sprite2D" parent="."]
+position = Vector2(3015, -62)
+rotation = 3.14159
 texture = ExtResource("8_0tim6")

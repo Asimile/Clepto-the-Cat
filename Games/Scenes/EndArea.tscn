@@ -91,12 +91,9 @@ animations = [{
 radius = 43.0465
 
 [node name="EndArea" type="Area2D"]
+z_index = 1
 collision_layer = 4
 script = ExtResource("1_mdjur")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.543897, 0.554232)
 
 [node name="HatchAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_udjlj")
