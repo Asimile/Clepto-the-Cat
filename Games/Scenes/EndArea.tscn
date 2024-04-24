@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://wctwfg6frquw"]
 
 [ext_resource type="Script" path="res://Code/EndArea.gd" id="1_mdjur"]
+[ext_resource type="AudioStream" uid="uid://cx8lofuvxnmbu" path="res://Sounds/hatchClose.ogg" id="2_hhbkt"]
 [ext_resource type="Texture2D" uid="uid://ca1mslcb8pyjk" path="res://Assets/CleptoHatch.png" id="2_po51d"]
-[ext_resource type="AudioStream" uid="uid://duw4fcyn4qmj8" path="res://Sounds/hatchClose.wav" id="2_udjlj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41uy0"]
 atlas = ExtResource("2_po51d")
@@ -96,7 +96,7 @@ collision_layer = 4
 script = ExtResource("1_mdjur")
 
 [node name="HatchAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_udjlj")
+stream = ExtResource("2_hhbkt")
 volume_db = -10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
