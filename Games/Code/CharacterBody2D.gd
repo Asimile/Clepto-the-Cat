@@ -10,8 +10,8 @@ var TIRED_FRAMES = 150
 var tired = 0
 var walljump_ready = false
 var crouch_audio_played = false
-#Probably a better way to do this
-var walljump_array = [false, false, false, false, false, false, false, false, false, false, false, false, false]
+#Probably a better way to do this. This game is small enough that this isn't a detriment. Next time I'll do a timer.
+var walljump_array = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 
 @onready var ANIM_SPRITE = $CleptoSprite2D
 @onready var ANIM_PLAYER = $AnimationPlayer
